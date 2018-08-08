@@ -297,7 +297,8 @@ public class ActionFacade implements ApplicationContextAware {
                 + "Developed with Java Spring Framework.\n"
                 + "Tested in Windows/Linux. Need JRE-1.8.\n"
                 + "Roman Koldaev, Saratov city, Russia.\n"
-                + "Home=http://jivam.sf.net/ ,\n"
+                + "Home = http://jivam.sf.net/ , or\n"
+                + "https://github.com/harp077/jivam/ \n"
                 + "E-mail=harp07@mail.ru",
                 top, JOptionPane.INFORMATION_MESSAGE, icon);
     }
@@ -309,7 +310,7 @@ public class ActionFacade implements ApplicationContextAware {
 
     public void InstallLF() {
         ///////////////////
-        MyInstLF("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+        /*MyInstLF("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         MyInstLF("com.jtattoo.plaf.aero.AeroLookAndFeel");
         MyInstLF("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
         MyInstLF("com.jtattoo.plaf.fast.FastLookAndFeel");
@@ -321,8 +322,36 @@ public class ActionFacade implements ApplicationContextAware {
         MyInstLF("com.jtattoo.plaf.luna.LunaLookAndFeel");
         MyInstLF("com.jtattoo.plaf.texture.TextureLookAndFeel");
         MyInstLF("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");
+        MyInstLF("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");*/
         ///////////////////////
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceSaharaLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceAutumnLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCremeLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel");                  
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceModerateLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMagellanLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMistAquaLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMistSilverLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceOfficeBlue2007LookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceOfficeBlack2007LookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceOfficeSilver2007LookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceNebulaLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceNebulaBrickWallLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGeminiLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceDustCoffeeLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceDustLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceRavenLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGraphiteAquaLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGraphiteGlassLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceBusinessBlackSteelLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceBusinessBlueSteelLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceBusinessLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMarinerLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceTwilightLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCeruleanLookAndFeel"); 
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceEmeraldDuskLookAndFeel");
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceChallengerDeepLookAndFeel");        
     }
 
     public void setLF(JFrame frame) {
