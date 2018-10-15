@@ -8,9 +8,10 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-ver>4.3.18.RELEASE</spring-ver>
+        <spring-ver>4.3.19.RELEASE</spring-ver>
     </properties>
     
     <dependencies>

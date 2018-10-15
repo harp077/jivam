@@ -53,7 +53,7 @@ public class HashTextGui extends javax.swing.JFrame {
     public static String langsel;  
     public static AbstractApplicationContext ctx;
     public static HashTextGui frame;
-    private static Dimension frameDimension = new Dimension(800, 600);
+    private static Dimension frameDimension = new Dimension(800, 550);
     public ImageIcon FrameIcon = new ImageIcon(getClass().getResource("/img/SubFrameIcon.png"));
     //public String[] alphabet = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     //private Random mygen = new Random(new Date().getTime());
@@ -179,7 +179,6 @@ public class HashTextGui extends javax.swing.JFrame {
         mpRotate = new javax.swing.JMenuItem();
         mpResize = new javax.swing.JMenuItem();
         topjToolBar = new javax.swing.JToolBar();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
         labelLang = new javax.swing.JLabel();
         bcomboLang = new javax.swing.JComboBox<>();
         jSeparator3 = new javax.swing.JToolBar.Separator();
@@ -264,7 +263,6 @@ public class HashTextGui extends javax.swing.JFrame {
 
         topjToolBar.setBorder(javax.swing.BorderFactory.createTitledBorder("ToolBar"));
         topjToolBar.setFloatable(false);
-        topjToolBar.add(jSeparator2);
 
         labelLang.setText("Lang = ");
         topjToolBar.add(labelLang);
@@ -457,7 +455,7 @@ public class HashTextGui extends javax.swing.JFrame {
         imgPanel.setLayout(imgPanelLayout);
         imgPanelLayout.setHorizontalGroup(
             imgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imgScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+            .addComponent(imgScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
         );
         imgPanelLayout.setVerticalGroup(
             imgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -818,7 +816,6 @@ public class HashTextGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
