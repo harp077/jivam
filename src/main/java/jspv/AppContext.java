@@ -11,12 +11,15 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @Configuration
 @ComponentScan(basePackages = {"jspv"})
 //@PropertySource(value = {"file:cfg/jivam.properties"})
 @PropertySource(value = {"classpath:jivam.properties"})
-//@EnableAsync
+@EnableAsync
 //@EnableScheduling
 //@EnableTransactionManagement
 //@EnableLoadTimeWeaving
@@ -40,6 +43,11 @@ public class AppContext {
         messageSource.setBasename("msg");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
+    } 
+    
+    @Bean
+    public TaskExecutor taskExecutor() {
+        return new SimpleAsyncTaskExecutor();
     }    
     
     @Bean
