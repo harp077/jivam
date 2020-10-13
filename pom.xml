@@ -11,23 +11,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-ver>4.3.19.RELEASE</spring-ver>
+        <spring-ver>4.3.25.RELEASE</spring-ver>
     </properties>
+    
+    <name>jivam</name> 
     
     <dependencies>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring-ver}</version>
-        </dependency> 
-        
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring-ver}</version>
-        </dependency>  
-        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -63,13 +53,19 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-
+        
+        <dependency>
+            <groupId>de.muntjak</groupId>
+            <artifactId>tinylaf</artifactId>
+            <version>1.4.0</version>
+        </dependency>        
+        <!--
         <dependency>
             <groupId>com.github.insubstantial</groupId>
             <artifactId>substance</artifactId>
             <version>7.3</version>
         </dependency>  
-
+        -->
     </dependencies>  
     
     <build>
@@ -132,7 +128,5 @@
         </plugins>
         
     </build> 
-    
-    <name>jivam</name>      
-    
+   
 </project>

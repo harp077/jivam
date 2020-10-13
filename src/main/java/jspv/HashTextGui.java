@@ -53,8 +53,8 @@ public class HashTextGui extends javax.swing.JFrame {
     public static String langsel;  
     public static AbstractApplicationContext ctx;
     public static HashTextGui frame;
-    private static Dimension frameDimension = new Dimension(800, 550);
-    public ImageIcon FrameIcon = new ImageIcon(getClass().getResource("/img/SubFrameIcon.png"));
+    private static Dimension frameDimension = new Dimension(720, 512);
+    public ImageIcon FrameIcon = new ImageIcon(getClass().getResource("/img/FrameIcon-3.png"));
     //public String[] alphabet = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     //private Random mygen = new Random(new Date().getTime());
     public String[] filtersArray = {
@@ -97,6 +97,11 @@ public class HashTextGui extends javax.swing.JFrame {
         this.labelLang.setVisible(false);
         this.bSaveCFG.setVisible(false);
         this.mSaveCFG.setVisible(false);
+        this.bSkin.setVisible(false);
+        this.mSkin.setVisible(false); 
+        this.bKill.setVisible(false);
+        this.mKill.setVisible(false); 
+        this.mpKill.setVisible(false); 
         //this.mainSplitPane.setBorder(javax.swing.BorderFactory.createTitledBorder(getMSG("main.img.view",perevod)));
     }
     
@@ -200,6 +205,7 @@ public class HashTextGui extends javax.swing.JFrame {
         bSaveCFG = new javax.swing.JButton();
         bHelp = new javax.swing.JButton();
         bAbout = new javax.swing.JButton();
+        bQuit = new javax.swing.JButton();
         mainSplitPane = new javax.swing.JSplitPane();
         fsScrollPane = new javax.swing.JScrollPane();
         fsjTree = new javax.swing.JTree();
@@ -276,7 +282,7 @@ public class HashTextGui extends javax.swing.JFrame {
         topjToolBar.add(bcomboLang);
         topjToolBar.add(jSeparator3);
 
-        jLabel2.setText("Device = ");
+        jLabel2.setText("Device: ");
         topjToolBar.add(jLabel2);
 
         bcomboDevice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -290,7 +296,7 @@ public class HashTextGui extends javax.swing.JFrame {
         topjToolBar.add(bcomboDevice);
         topjToolBar.add(jSeparator4);
 
-        jLabel4.setText("Filter = ");
+        jLabel4.setText("Filter: ");
         topjToolBar.add(jLabel4);
 
         bcomboFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "smooth", "fast", "default", "replicate", "area average", " " }));
@@ -302,7 +308,7 @@ public class HashTextGui extends javax.swing.JFrame {
         topjToolBar.add(bcomboFilter);
         topjToolBar.add(jSeparator1);
 
-        jLabel1.setText("Scale = ");
+        jLabel1.setText("Scale: ");
         topjToolBar.add(jLabel1);
 
         bcomboScale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "25", "50", "75", "100", "125", "150", "200", "by window" }));
@@ -318,7 +324,7 @@ public class HashTextGui extends javax.swing.JFrame {
         topjToolBar.add(jLabel3);
         topjToolBar.add(jSeparator5);
 
-        bKill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/delete.png"))); // NOI18N
+        bKill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/delete.png"))); // NOI18N
         bKill.setToolTipText("delete File/Folder");
         bKill.setFocusable(false);
         bKill.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -330,7 +336,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         topjToolBar.add(bKill);
 
-        bResize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/resize-24.png"))); // NOI18N
+        bResize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/resize-16.png"))); // NOI18N
         bResize.setToolTipText("Resize Image");
         bResize.setFocusable(false);
         bResize.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -342,7 +348,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         topjToolBar.add(bResize);
 
-        bRotate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/rotate-24.png"))); // NOI18N
+        bRotate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/rotate-16.png"))); // NOI18N
         bRotate.setToolTipText("Rotate Image");
         bRotate.setFocusable(false);
         bRotate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -354,7 +360,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         topjToolBar.add(bRotate);
 
-        bConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/Converter-icon-24.png"))); // NOI18N
+        bConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/Converter-icon-16.png"))); // NOI18N
         bConvert.setToolTipText("Convert Image");
         bConvert.setFocusable(false);
         bConvert.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -366,7 +372,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         topjToolBar.add(bConvert);
 
-        bSkin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/skin_color_chooser-24.png"))); // NOI18N
+        bSkin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/color_chooser-16.png"))); // NOI18N
         bSkin.setToolTipText("Skin Change");
         bSkin.setFocusable(false);
         bSkin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -378,7 +384,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         topjToolBar.add(bSkin);
 
-        bSaveCFG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/save-24.png"))); // NOI18N
+        bSaveCFG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/save-16.png"))); // NOI18N
         bSaveCFG.setToolTipText("Save Config");
         bSaveCFG.setFocusable(false);
         bSaveCFG.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -390,7 +396,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         topjToolBar.add(bSaveCFG);
 
-        bHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/info-cyan-24.png"))); // NOI18N
+        bHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/info-cyan-16.png"))); // NOI18N
         bHelp.setToolTipText("Help");
         bHelp.setFocusable(false);
         bHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -402,7 +408,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         topjToolBar.add(bHelp);
 
-        bAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/24x24/help-cyan-24.png"))); // NOI18N
+        bAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/help-green-16.png"))); // NOI18N
         bAbout.setToolTipText("About");
         bAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,6 +416,17 @@ public class HashTextGui extends javax.swing.JFrame {
             }
         });
         topjToolBar.add(bAbout);
+
+        bQuit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/quit.png"))); // NOI18N
+        bQuit.setFocusable(false);
+        bQuit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bQuit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bQuitActionPerformed(evt);
+            }
+        });
+        topjToolBar.add(bQuit);
 
         getContentPane().add(topjToolBar, java.awt.BorderLayout.NORTH);
 
@@ -459,7 +476,7 @@ public class HashTextGui extends javax.swing.JFrame {
         );
         imgPanelLayout.setVerticalGroup(
             imgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imgScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+            .addComponent(imgScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
         );
 
         mainSplitPane.setRightComponent(imgPanel);
@@ -474,7 +491,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
         mFile.setText("File");
 
-        mSkin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/color_swatches.png"))); // NOI18N
+        mSkin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/color_chooser-16.png"))); // NOI18N
         mSkin.setText("Change Skin");
         mSkin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -554,7 +571,7 @@ public class HashTextGui extends javax.swing.JFrame {
         });
         mHelpAbout.add(mHelp);
 
-        mAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/help-cyan-16.png"))); // NOI18N
+        mAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/help-green-16.png"))); // NOI18N
         mAbout.setText("About");
         mAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -765,6 +782,10 @@ public class HashTextGui extends javax.swing.JFrame {
         //SwingUtilities.updateComponentTreeUI(this);
     }//GEN-LAST:event_bcomboLangActionPerformed
 
+    private void bQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bQuitActionPerformed
+        actionFacade.exit(frame);
+    }//GEN-LAST:event_bQuitActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -799,6 +820,7 @@ public class HashTextGui extends javax.swing.JFrame {
     private javax.swing.JButton bConvert;
     private javax.swing.JButton bHelp;
     private javax.swing.JButton bKill;
+    private javax.swing.JButton bQuit;
     private javax.swing.JButton bResize;
     private javax.swing.JButton bRotate;
     private javax.swing.JButton bSaveCFG;

@@ -309,6 +309,8 @@ public class ActionFacade implements ApplicationContextAware {
     }
 
     public void InstallLF() {
+        MyInstLF("de.muntjak.tinylookandfeel.TinyLookAndFeel");
+        MyInstLF("javax.swing.plaf.metal.MetalLookAndFeel");        
         ///////////////////
         /*MyInstLF("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         MyInstLF("com.jtattoo.plaf.aero.AeroLookAndFeel");
@@ -324,7 +326,7 @@ public class ActionFacade implements ApplicationContextAware {
         MyInstLF("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
         MyInstLF("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");*/
         ///////////////////////
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceSaharaLookAndFeel");
+        /*MyInstLF("org.pushingpixels.substance.api.skin.SubstanceSaharaLookAndFeel");
         MyInstLF("org.pushingpixels.substance.api.skin.SubstanceAutumnLookAndFeel");
         MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCremeLookAndFeel");
         MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel");                  
@@ -351,7 +353,7 @@ public class ActionFacade implements ApplicationContextAware {
         MyInstLF("org.pushingpixels.substance.api.skin.SubstanceTwilightLookAndFeel");
         MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCeruleanLookAndFeel"); 
         MyInstLF("org.pushingpixels.substance.api.skin.SubstanceEmeraldDuskLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceChallengerDeepLookAndFeel");        
+        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceChallengerDeepLookAndFeel");  */      
     }
 
     public void setLF(JFrame frame) {

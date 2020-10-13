@@ -64,7 +64,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="mSkin">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/16x16/color_swatches.png"/>
+                  <Image iconType="3" name="/img/16x16/color_chooser-16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Change Skin"/>
               </Properties>
@@ -166,7 +166,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="mAbout">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/img/16x16/help-cyan-16.png"/>
+                  <Image iconType="3" name="/img/16x16/help-green-16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="About"/>
               </Properties>
@@ -246,7 +246,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Device = "/>
+            <Property name="text" type="java.lang.String" value="Device: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="bcomboDevice">
@@ -278,7 +278,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Filter = "/>
+            <Property name="text" type="java.lang.String" value="Filter: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="bcomboFilter">
@@ -305,7 +305,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Scale = "/>
+            <Property name="text" type="java.lang.String" value="Scale: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="bcomboScale">
@@ -341,7 +341,7 @@
         <Component class="javax.swing.JButton" name="bKill">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/delete.png"/>
+              <Image iconType="3" name="/img/16x16/delete.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="delete File/Folder"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -355,7 +355,7 @@
         <Component class="javax.swing.JButton" name="bResize">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/resize-24.png"/>
+              <Image iconType="3" name="/img/16x16/resize-16.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Resize Image"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -369,7 +369,7 @@
         <Component class="javax.swing.JButton" name="bRotate">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/rotate-24.png"/>
+              <Image iconType="3" name="/img/16x16/rotate-16.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Rotate Image"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -383,7 +383,7 @@
         <Component class="javax.swing.JButton" name="bConvert">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/Converter-icon-24.png"/>
+              <Image iconType="3" name="/img/16x16/Converter-icon-16.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Convert Image"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -397,7 +397,7 @@
         <Component class="javax.swing.JButton" name="bSkin">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/skin_color_chooser-24.png"/>
+              <Image iconType="3" name="/img/16x16/color_chooser-16.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Skin Change"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -411,7 +411,7 @@
         <Component class="javax.swing.JButton" name="bSaveCFG">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/save-24.png"/>
+              <Image iconType="3" name="/img/16x16/save-16.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Save Config"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -425,7 +425,7 @@
         <Component class="javax.swing.JButton" name="bHelp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/info-cyan-24.png"/>
+              <Image iconType="3" name="/img/16x16/info-cyan-16.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Help"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -439,12 +439,25 @@
         <Component class="javax.swing.JButton" name="bAbout">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/24x24/help-cyan-24.png"/>
+              <Image iconType="3" name="/img/16x16/help-green-16.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="About"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAboutActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="bQuit">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/16x16/quit.png"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bQuitActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -530,7 +543,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="imgScrollPane" alignment="1" pref="222" max="32767" attributes="0"/>
+                  <Component id="imgScrollPane" alignment="1" pref="230" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
