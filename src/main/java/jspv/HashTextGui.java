@@ -29,6 +29,7 @@ import org.springframework.context.annotation.Description;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.scheduling.annotation.Async;
 
 @Component
 @Scope("singleton")
@@ -95,13 +96,6 @@ public class HashTextGui extends javax.swing.JFrame {
         this.bcomboLang.setSelectedItem(perevod);
         this.bcomboLang.setVisible(false);
         this.labelLang.setVisible(false);
-        this.bSaveCFG.setVisible(false);
-        this.mSaveCFG.setVisible(false);
-        this.bSkin.setVisible(false);
-        this.mSkin.setVisible(false); 
-        this.bKill.setVisible(false);
-        this.mKill.setVisible(false); 
-        this.mpKill.setVisible(false); 
         //this.mainSplitPane.setBorder(javax.swing.BorderFactory.createTitledBorder(getMSG("main.img.view",perevod)));
     }
     
@@ -115,12 +109,14 @@ public class HashTextGui extends javax.swing.JFrame {
         //frame.pack();
     }
 
+    //@Async - ЗДЕСЬ НЕ РАБОТАЕТ, РАБОТАЕТ ИЗ ACTION-FACADE, НО ГЛЮЧИТ !!!!!!!!!!!!!
     public void showImage(String fpath, String scale) {
         //ImgLabel.setIcon(null);
         try {
             if (fpath.equals("")||scale.equals("")) {
                 return;
             }
+            outTF.setText("Please wait ! Show thread = " + Thread.currentThread().getName());
             String ext = fpath.toLowerCase();
             //System.out.println(ext);
             if (!(ext.endsWith(".bmp") ||ext.endsWith(".png") || ext.endsWith(".gif") || ext.endsWith(".jpg") || ext.endsWith(".jpeg"))) {
@@ -179,7 +175,6 @@ public class HashTextGui extends javax.swing.JFrame {
     private void initComponents() {
 
         mpMenu = new javax.swing.JPopupMenu();
-        mpKill = new javax.swing.JMenuItem();
         mpConvert = new javax.swing.JMenuItem();
         mpRotate = new javax.swing.JMenuItem();
         mpResize = new javax.swing.JMenuItem();
@@ -197,12 +192,9 @@ public class HashTextGui extends javax.swing.JFrame {
         bcomboScale = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JToolBar.Separator();
-        bKill = new javax.swing.JButton();
         bResize = new javax.swing.JButton();
         bRotate = new javax.swing.JButton();
         bConvert = new javax.swing.JButton();
-        bSkin = new javax.swing.JButton();
-        bSaveCFG = new javax.swing.JButton();
         bHelp = new javax.swing.JButton();
         bAbout = new javax.swing.JButton();
         bQuit = new javax.swing.JButton();
@@ -215,26 +207,14 @@ public class HashTextGui extends javax.swing.JFrame {
         outTF = new javax.swing.JTextField();
         topjMenuBar = new javax.swing.JMenuBar();
         mFile = new javax.swing.JMenu();
-        mSkin = new javax.swing.JMenuItem();
-        mSaveCFG = new javax.swing.JMenuItem();
         mExit = new javax.swing.JMenuItem();
         mManipulations = new javax.swing.JMenu();
-        mKill = new javax.swing.JMenuItem();
         mConvert = new javax.swing.JMenuItem();
         mRotate = new javax.swing.JMenuItem();
         mResize = new javax.swing.JMenuItem();
         mHelpAbout = new javax.swing.JMenu();
         mHelp = new javax.swing.JMenuItem();
         mAbout = new javax.swing.JMenuItem();
-
-        mpKill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/delete.png"))); // NOI18N
-        mpKill.setText("Delete File/Folder");
-        mpKill.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mpKillActionPerformed(evt);
-            }
-        });
-        mpMenu.add(mpKill);
 
         mpConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/Converter-icon-16.png"))); // NOI18N
         mpConvert.setText("Convert Image");
@@ -324,18 +304,6 @@ public class HashTextGui extends javax.swing.JFrame {
         topjToolBar.add(jLabel3);
         topjToolBar.add(jSeparator5);
 
-        bKill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/delete.png"))); // NOI18N
-        bKill.setToolTipText("delete File/Folder");
-        bKill.setFocusable(false);
-        bKill.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bKill.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        bKill.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bKillActionPerformed(evt);
-            }
-        });
-        topjToolBar.add(bKill);
-
         bResize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/resize-16.png"))); // NOI18N
         bResize.setToolTipText("Resize Image");
         bResize.setFocusable(false);
@@ -371,30 +339,6 @@ public class HashTextGui extends javax.swing.JFrame {
             }
         });
         topjToolBar.add(bConvert);
-
-        bSkin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/color_chooser-16.png"))); // NOI18N
-        bSkin.setToolTipText("Skin Change");
-        bSkin.setFocusable(false);
-        bSkin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bSkin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        bSkin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSkinActionPerformed(evt);
-            }
-        });
-        topjToolBar.add(bSkin);
-
-        bSaveCFG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/save-16.png"))); // NOI18N
-        bSaveCFG.setToolTipText("Save Config");
-        bSaveCFG.setFocusable(false);
-        bSaveCFG.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bSaveCFG.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        bSaveCFG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSaveCFGActionPerformed(evt);
-            }
-        });
-        topjToolBar.add(bSaveCFG);
 
         bHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/info-cyan-16.png"))); // NOI18N
         bHelp.setToolTipText("Help");
@@ -491,24 +435,6 @@ public class HashTextGui extends javax.swing.JFrame {
 
         mFile.setText("File");
 
-        mSkin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/color_chooser-16.png"))); // NOI18N
-        mSkin.setText("Change Skin");
-        mSkin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mSkinActionPerformed(evt);
-            }
-        });
-        mFile.add(mSkin);
-
-        mSaveCFG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/save-16.png"))); // NOI18N
-        mSaveCFG.setText("Save Config");
-        mSaveCFG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mSaveCFGActionPerformed(evt);
-            }
-        });
-        mFile.add(mSaveCFG);
-
         mExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/quit.png"))); // NOI18N
         mExit.setText("Exit");
         mExit.addActionListener(new java.awt.event.ActionListener() {
@@ -521,15 +447,6 @@ public class HashTextGui extends javax.swing.JFrame {
         topjMenuBar.add(mFile);
 
         mManipulations.setText("Manipulations");
-
-        mKill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/delete.png"))); // NOI18N
-        mKill.setText("Delete File/Folder");
-        mKill.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mKillActionPerformed(evt);
-            }
-        });
-        mManipulations.add(mKill);
 
         mConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/Converter-icon-16.png"))); // NOI18N
         mConvert.setText("Convert Image");
@@ -600,17 +517,11 @@ public class HashTextGui extends javax.swing.JFrame {
         actionFacade.exit(frame);
     }//GEN-LAST:event_mExitActionPerformed
 
-    private void bSkinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSkinActionPerformed
-        actionFacade.changeLF(frame);
-    }//GEN-LAST:event_bSkinActionPerformed
-
-    private void mSkinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSkinActionPerformed
-        actionFacade.changeLF(frame);
-    }//GEN-LAST:event_mSkinActionPerformed
-
     private void fsjTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fsjTreeMouseClicked
         try {
-            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString());
+            //new Thread(() ->
+            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString())
+            ;//).start();
         } catch (NullPointerException ne) {
         }
     }//GEN-LAST:event_fsjTreeMouseClicked
@@ -624,7 +535,9 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void bcomboScaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcomboScaleActionPerformed
         try {
-            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString());
+            //new Thread(() -> 
+            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString())
+            ;//).start();
         } catch (NullPointerException ne) {
         }
     }//GEN-LAST:event_bcomboScaleActionPerformed
@@ -632,7 +545,9 @@ public class HashTextGui extends javax.swing.JFrame {
     private void fsjTreeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fsjTreeKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_DOWN
                 || evt.getKeyCode() == KeyEvent.VK_UP) {
-            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString());
+            //new Thread(() -> 
+            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString())
+            ;//).start();
         }
     }//GEN-LAST:event_fsjTreeKeyReleased
 
@@ -646,40 +561,19 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void bcomboFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcomboFilterActionPerformed
         try {
-            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString());
+            //new Thread(() ->
+            showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString())
+            ;//).start();
         } catch (NullPointerException ne) {
         }
     }//GEN-LAST:event_bcomboFilterActionPerformed
 
-    private void bKillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bKillActionPerformed
-        try {
-            actionFacade.killFileFolder(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame, outTF, ImgLabel);
-            //fsjTree.updateUI();
-        } catch (NullPointerException ne) {
-            JOptionPane.showMessageDialog(frame, "File/Folder not selected !", "Info", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_bKillActionPerformed
-
-    private void mKillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mKillActionPerformed
-        try {
-            actionFacade.killFileFolder(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame, outTF, ImgLabel);
-        } catch (NullPointerException ne) {
-            JOptionPane.showMessageDialog(frame, "File/Folder not selected !", "Info", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_mKillActionPerformed
-
-    private void mpKillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpKillActionPerformed
-        try {
-            actionFacade.killFileFolder(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame, outTF, ImgLabel);
-        } catch (NullPointerException ne) {
-            JOptionPane.showMessageDialog(frame, "File/Folder not selected !", "Info", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_mpKillActionPerformed
-
     private void mainSplitPaneComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_mainSplitPaneComponentResized
         if (bcomboScale.getSelectedItem().toString().equals("by window")) {
             try {
-                showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString());
+                //new Thread(() ->
+                showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString())
+                ;//).start();
             } catch (NullPointerException ne) {
             }
         }
@@ -689,7 +583,9 @@ public class HashTextGui extends javax.swing.JFrame {
         //System.out.println(evt.getPropertyName());
         if (evt.getPropertyName().equals("dividerLocation") && bcomboScale.getSelectedItem().toString().equals("by window")) {
             try {
-                showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString());
+                //new Thread(() ->
+                showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString())
+                ;//).start();
             } catch (NullPointerException ne) {
             }
         }
@@ -767,14 +663,6 @@ public class HashTextGui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mpResizeActionPerformed
 
-    private void mSaveCFGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSaveCFGActionPerformed
-        actionFacade.saveProperties(frame);
-    }//GEN-LAST:event_mSaveCFGActionPerformed
-
-    private void bSaveCFGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSaveCFGActionPerformed
-        actionFacade.saveProperties(frame);
-    }//GEN-LAST:event_bSaveCFGActionPerformed
-
     private void bcomboLangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcomboLangActionPerformed
         this.perevod=bcomboLang.getSelectedItem().toString();
         actionFacade.perevod=this.perevod;
@@ -815,24 +703,21 @@ public class HashTextGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ImgLabel;
+    public javax.swing.JLabel ImgLabel;
     private javax.swing.JButton bAbout;
     private javax.swing.JButton bConvert;
     private javax.swing.JButton bHelp;
-    private javax.swing.JButton bKill;
     private javax.swing.JButton bQuit;
     private javax.swing.JButton bResize;
     private javax.swing.JButton bRotate;
-    private javax.swing.JButton bSaveCFG;
-    private javax.swing.JButton bSkin;
     public javax.swing.JComboBox<String> bcomboDevice;
-    private javax.swing.JComboBox<String> bcomboFilter;
+    public javax.swing.JComboBox<String> bcomboFilter;
     private javax.swing.JComboBox<String> bcomboLang;
     private javax.swing.JComboBox<String> bcomboScale;
     private javax.swing.JScrollPane fsScrollPane;
     private javax.swing.JTree fsjTree;
-    private javax.swing.JPanel imgPanel;
-    private javax.swing.JScrollPane imgScrollPane;
+    public javax.swing.JPanel imgPanel;
+    public javax.swing.JScrollPane imgScrollPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -848,15 +733,11 @@ public class HashTextGui extends javax.swing.JFrame {
     private javax.swing.JMenu mFile;
     private javax.swing.JMenuItem mHelp;
     private javax.swing.JMenu mHelpAbout;
-    private javax.swing.JMenuItem mKill;
     private javax.swing.JMenu mManipulations;
     private javax.swing.JMenuItem mResize;
     private javax.swing.JMenuItem mRotate;
-    private javax.swing.JMenuItem mSaveCFG;
-    private javax.swing.JMenuItem mSkin;
     private static javax.swing.JSplitPane mainSplitPane;
     private javax.swing.JMenuItem mpConvert;
-    private javax.swing.JMenuItem mpKill;
     private javax.swing.JPopupMenu mpMenu;
     private javax.swing.JMenuItem mpResize;
     private javax.swing.JMenuItem mpRotate;

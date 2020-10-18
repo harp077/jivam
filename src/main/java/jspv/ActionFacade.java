@@ -28,10 +28,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import static jspv.HashTextGui.frame;
 import jspv.converter.ImageRotate;
 import jspv.converter.ImgResize;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
+//import org.apache.commons.configuration.ConfigurationException;
+//import org.apache.commons.configuration.PropertiesConfiguration;
 //import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -62,6 +63,7 @@ public class ActionFacade implements ApplicationContextAware {
     private String nnput;
     public int intbuf;
     private ApplicationContext ctx;
+    //private File tmpFile;
 
     @PostConstruct
     public void afterBirn() {
@@ -80,7 +82,7 @@ public class ActionFacade implements ApplicationContextAware {
         ctx.getMessage(msg, null, "default", new Locale(loc));
     }    
     
-    public void saveProperties (JFrame frame) {
+    /*public void saveProperties (JFrame frame) {
         try {
             PropertiesConfiguration config = new PropertiesConfiguration("cfg/jivam.properties");
             config.setProperty("skin", currentLAF);
@@ -90,7 +92,7 @@ public class ActionFacade implements ApplicationContextAware {
         } catch (ConfigurationException ex) {
             Logger.getLogger(ActionFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 
     public Boolean checkFolder(String ffput, JFrame frame) {
         File imgFile = new File(ffput);
@@ -101,10 +103,12 @@ public class ActionFacade implements ApplicationContextAware {
         return false;
     }
 
+    @Async
     public void pictureRotate(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
+        jspv.HashTextGui.frame.outTF.setText("Please wait ! Rotate thread = " + Thread.currentThread().getName());
         JLabel inLabel = new JLabel("Image: " + ffput);
         JSeparator jsep1 = new JSeparator();
         JLabel tipLabel = new JLabel("Input Rotate Degree (from -360 to +360): ");
@@ -128,13 +132,16 @@ public class ActionFacade implements ApplicationContextAware {
         int result = JOptionPane.showConfirmDialog(frame, ob, "Image Rotate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
         if (result == JOptionPane.OK_OPTION) {
             ImageRotate.thumbnailsRotate(ffput, intbuf);
+            jspv.HashTextGui.frame.outTF.setText("Rotate completed !");
         }
     }
 
+    @Async
     public void imageResize(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
+        jspv.HashTextGui.frame.outTF.setText("Please wait ! Resize thread = " + Thread.currentThread().getName());
         JLabel inLabel = new JLabel("Image: " + ffput);
         JSeparator jsep1 = new JSeparator();
         JLabel tipLabel = new JLabel("Input Resize Scale in percent (max=200%): ");
@@ -163,16 +170,19 @@ public class ActionFacade implements ApplicationContextAware {
             //(int)spin.getValue();
             System.out.println("scale = " + db);
             ImgResize.resizeImg(ffput, db);
+            jspv.HashTextGui.frame.outTF.setText("Resize completed !");
         }
     }
 
+    @Async
     public void convertImage(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
+        jspv.HashTextGui.frame.outTF.setText("Please wait ! Convert thread = " + Thread.currentThread().getName());
         JComboBox tipSelector = new JComboBox();
         tipSelector.setModel(new javax.swing.DefaultComboBoxModel(imgTipArray));
-        nnput = ffput.substring(0, ffput.length() - 4) + "." + tipSelector.getSelectedItem().toString().toLowerCase();
+        nnput = ffput.substring(0, ffput.length() - 4) + ".converted." + tipSelector.getSelectedItem().toString().toLowerCase();
         JLabel inLabel = new JLabel("Input file  = " + ffput);
         JSeparator jsep1 = new JSeparator();
         JSeparator jsep2 = new JSeparator();
@@ -197,15 +207,19 @@ public class ActionFacade implements ApplicationContextAware {
             switch (tipSelector.getSelectedItem().toString().toLowerCase()) {
                 case "bmp":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.BMP_FORMAT);
+                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
                 case "png":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.PNG_FORMAT);
+                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
                 case "jpg":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.JPG_FORMAT);
+                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
                 case "gif":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.GIF_FORMAT);
+                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
             }
         }
@@ -311,49 +325,6 @@ public class ActionFacade implements ApplicationContextAware {
     public void InstallLF() {
         MyInstLF("de.muntjak.tinylookandfeel.TinyLookAndFeel");
         MyInstLF("javax.swing.plaf.metal.MetalLookAndFeel");        
-        ///////////////////
-        /*MyInstLF("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.aero.AeroLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.fast.FastLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.mint.MintLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.noire.NoireLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.smart.SmartLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.luna.LunaLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.texture.TextureLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.graphite.GraphiteLookAndFeel");
-        MyInstLF("com.jtattoo.plaf.bernstein.BernsteinLookAndFeel");*/
-        ///////////////////////
-        /*MyInstLF("org.pushingpixels.substance.api.skin.SubstanceSaharaLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceAutumnLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCremeLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel");                  
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceModerateLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMagellanLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMistAquaLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMistSilverLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceOfficeBlue2007LookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceOfficeBlack2007LookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceOfficeSilver2007LookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceNebulaLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceNebulaBrickWallLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGeminiLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceDustCoffeeLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceDustLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceRavenLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGraphiteAquaLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceGraphiteGlassLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceBusinessBlackSteelLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceBusinessBlueSteelLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceBusinessLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceMarinerLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceTwilightLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceCeruleanLookAndFeel"); 
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceEmeraldDuskLookAndFeel");
-        MyInstLF("org.pushingpixels.substance.api.skin.SubstanceChallengerDeepLookAndFeel");  */      
     }
 
     public void setLF(JFrame frame) {
