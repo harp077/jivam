@@ -35,6 +35,7 @@ import jspv.converter.ImgResize;
 //import org.apache.commons.configuration.PropertiesConfiguration;
 //import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -104,7 +105,7 @@ public class ActionFacade implements ApplicationContextAware {
     }
 
     @Async
-    public void pictureRotate(String ffput, JFrame frame) {
+    public void picRotate(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
@@ -131,13 +132,31 @@ public class ActionFacade implements ApplicationContextAware {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/24x24/rotate-24.png"));
         int result = JOptionPane.showConfirmDialog(frame, ob, "Image Rotate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
         if (result == JOptionPane.OK_OPTION) {
-            ImageRotate.thumbnailsRotate(ffput, intbuf);
+            //ImageRotate.thumbnailsRotate(ffput, intbuf);
+            String tipend = StringUtils.substringAfterLast(ffput.toLowerCase(), ".");
+            switch ( tipend ) {
+                case "bmp":
+                    ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
+                    break;
+                case "png":
+                    ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
+                    break;
+                case "jpg":
+                    ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
+                    break;
+                case "jpeg":
+                    ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
+                    break;                    
+                case "gif":
+                    ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
+                    break;                
+            }
             jspv.HashTextGui.frame.outTF.setText("Rotate completed !");
         }
     }
 
     @Async
-    public void imageResize(String ffput, JFrame frame) {
+    public void picResize(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
@@ -169,13 +188,15 @@ public class ActionFacade implements ApplicationContextAware {
             Double db = (0.0001 + intbuf) / 100;
             //(int)spin.getValue();
             System.out.println("scale = " + db);
+            //String tipend = StringUtils.substringAfterLast(ffput.toLowerCase(), ".");
+            //ImgResize.resizeImg(ffput + ".resized." + tipend, db);
             ImgResize.resizeImg(ffput, db);
             jspv.HashTextGui.frame.outTF.setText("Resize completed !");
         }
     }
 
     @Async
-    public void convertImage(String ffput, JFrame frame) {
+    public void picConvert(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
@@ -207,21 +228,18 @@ public class ActionFacade implements ApplicationContextAware {
             switch (tipSelector.getSelectedItem().toString().toLowerCase()) {
                 case "bmp":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.BMP_FORMAT);
-                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
                 case "png":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.PNG_FORMAT);
-                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
                 case "jpg":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.JPG_FORMAT);
-                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
                 case "gif":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.GIF_FORMAT);
-                    jspv.HashTextGui.frame.outTF.setText("Convert completed !");
                     break;
             }
+            jspv.HashTextGui.frame.outTF.setText("Convert completed !");
         }
     }
 

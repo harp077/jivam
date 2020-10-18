@@ -593,7 +593,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void bConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConvertActionPerformed
         try {
-            actionFacade.convertImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picConvert(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -601,7 +601,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void mConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConvertActionPerformed
         try {
-            actionFacade.convertImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picConvert(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -609,7 +609,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void mpConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpConvertActionPerformed
         try {
-            actionFacade.convertImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picConvert(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -617,7 +617,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void bRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRotateActionPerformed
         try {
-            actionFacade.pictureRotate(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picRotate(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -625,7 +625,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void mRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mRotateActionPerformed
         try {
-            actionFacade.pictureRotate(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picRotate(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -633,7 +633,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void mpRotateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpRotateActionPerformed
         try {
-            actionFacade.pictureRotate(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picRotate(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -641,7 +641,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void bResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bResizeActionPerformed
         try {
-            actionFacade.imageResize(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picResize(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -649,7 +649,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void mResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mResizeActionPerformed
         try {
-            actionFacade.imageResize(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picResize(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
@@ -657,7 +657,7 @@ public class HashTextGui extends javax.swing.JFrame {
 
     private void mpResizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpResizeActionPerformed
         try {
-            actionFacade.imageResize(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
+            actionFacade.picResize(fsjTree.getSelectionPath().getLastPathComponent().toString(), frame);
         } catch (NullPointerException ne) {
             JOptionPane.showMessageDialog(frame, "File not selected !", "Info", JOptionPane.WARNING_MESSAGE);
         }
