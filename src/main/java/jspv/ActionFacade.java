@@ -333,7 +333,7 @@ public class ActionFacade implements ApplicationContextAware {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/jivam.png"));
         JOptionPane.showMessageDialog(frame,
                   "JIVAM - free portable cross-platform image viewer and manipulator, 100%-pure Java.\n"
-                + "Can view, convert, resize and rotate images, support BMP/JPG/PNG/GIF formats.\n"
+                + "Can view, convert, resize and rotate images, support JPG/PNG/GIF formats.\n"
                 + "Tested in Windows/Linux. Need JRE-1.8.\n"
                 + "Create by Roman Koldaev, Saratov city, Russia.\n"
                 + "Home = http://jivam.sf.net/ , or\n"

@@ -57,7 +57,7 @@ public class HashTextGui extends javax.swing.JFrame {
     public static String langsel;  
     public static AbstractApplicationContext ctx;
     public static HashTextGui frame;
-    private static Dimension frameDimension = new Dimension(840, 550);
+    private static Dimension frameDimension = new Dimension(848, 550);
     public ImageIcon FrameIcon = new ImageIcon(getClass().getResource("/img/FrameIcon-3.png"));
     //public String[] alphabet = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     //private Random mygen = new Random(new Date().getTime());
@@ -122,12 +122,13 @@ public class HashTextGui extends javax.swing.JFrame {
             outTF.setText("Please wait ! Show thread = " + Thread.currentThread().getName());
             String ext = fpath.toLowerCase();
             //System.out.println(ext);
-            if (!(ext.endsWith(".bmp") ||ext.endsWith(".png") || ext.endsWith(".gif") || ext.endsWith(".jpg") || ext.endsWith(".jpeg"))) {
+            //if (!(ext.endsWith(".bmp") ||ext.endsWith(".png") || ext.endsWith(".gif") || ext.endsWith(".jpg") || ext.endsWith(".jpeg"))) {
+            if (!(ext.endsWith(".png") || ext.endsWith(".gif") || ext.endsWith(".jpg") || ext.endsWith(".jpeg"))) {
                 outTF.setText("");
                 ImgLabel.setIcon(null);
                 return;
             }
-            if (ext.endsWith(".bmp")) {
+            /*if (ext.endsWith(".bmp")) {
                 //if(tmpFile.exists()) tmpFile.delete();
                 String newpath = fpath.substring(0, fpath.length() - 4);
                 try {
@@ -141,7 +142,7 @@ public class HashTextGui extends javax.swing.JFrame {
                 ImageConverter.imgConvert(fpath, newpath, ImageFormats.PNG_FORMAT);
                 fpath = newpath;
                 //fsjTree.updateUI();
-            }            
+            } */           
             ImageIcon fimg = new ImageIcon(fpath);
             double k = 0.0;
             if (scale.equals("by window")) {
