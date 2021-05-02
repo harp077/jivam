@@ -213,6 +213,9 @@ public class ActionFacade implements ApplicationContextAware {
         JComboBox tipSelector = new JComboBox();
         tipSelector.setModel(new javax.swing.DefaultComboBoxModel(imgTipArray));
         nnput = ffput.substring(0, ffput.length() - 4) + ".converted." + tipSelector.getSelectedItem().toString().toLowerCase();
+        if (ffput.toLowerCase().endsWith(".jpeg")) {
+            nnput = ffput.substring(0, ffput.length() - 5) + ".converted." + tipSelector.getSelectedItem().toString().toLowerCase();
+        }         
         JLabel inLabel = new JLabel("Input file  = " + ffput);
         JSeparator jsep1 = new JSeparator();
         JSeparator jsep2 = new JSeparator();
@@ -220,7 +223,10 @@ public class ActionFacade implements ApplicationContextAware {
         JLabel tipLabel = new JLabel("Select Image Type to convert: ");
         ActionListener actionListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                nnput = ffput.substring(0, ffput.length() - 4) + "." + tipSelector.getSelectedItem().toString().toLowerCase();
+                nnput = ffput.substring(0, ffput.length() - 4) + ".converted." + tipSelector.getSelectedItem().toString().toLowerCase();
+                if (ffput.toLowerCase().endsWith(".jpeg")) {
+                    nnput = ffput.substring(0, ffput.length() - 5) + ".converted." + tipSelector.getSelectedItem().toString().toLowerCase();
+                }
                 outLabel.setText("Output file = " + nnput);
             }
         };
