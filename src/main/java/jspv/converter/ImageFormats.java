@@ -5,7 +5,7 @@ public enum ImageFormats {
     //WBMP_FORMAT("WBMP"),
     JPG_FORMAT("JPG"),
     GIF_FORMAT("GIF"),
-    BMP_FORMAT("BMP"),
+    //BMP_FORMAT("BMP"),
     PNG_FORMAT("PNG");
 
     private String caption;

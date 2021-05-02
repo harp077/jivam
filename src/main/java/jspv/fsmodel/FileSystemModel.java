@@ -76,7 +76,8 @@ public class FileSystemModel implements TreeModel {
             @Override
             public boolean accept(File pathname) {
                 String name = pathname.getName().toLowerCase();
-                return name.endsWith(".bmp")||name.endsWith(".jpeg")||name.endsWith(".gif")||name.endsWith(".png")||name.endsWith(".jpg")||pathname.isDirectory();
+                //return name.endsWith(".bmp")||
+                return name.endsWith(".jpeg")||name.endsWith(".gif")||name.endsWith(".png")||name.endsWith(".jpg")||pathname.isDirectory();
             }
         });
         int nChildren = children == null ? 0 : children.length;

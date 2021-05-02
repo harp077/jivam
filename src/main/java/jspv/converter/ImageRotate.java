@@ -27,15 +27,15 @@ public class ImageRotate {
                     .rotate(tip)
                     .scale(1.0)
                     .toFile(tmpFile);
-            FileUtils.copyFile(tmpFile, new File(put));
-            FileUtils.moveFile(new File(put), new File(put + ".rotated" + append));
+            FileUtils.copyFile(tmpFile, new File(put + ".rotated_" + tip + append));
+            //FileUtils.moveFile(new File(put), new File(put + ".rotated" + append));
             tmpFile.delete();            
         } catch (IOException ex) {
             Logger.getLogger(ImageRotate.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void rotateImage(String srcput, String dstput, int tip) {
+   /* public static void rotateImage(String srcput, String dstput, int tip) {
         if (Math.abs(tip) != 90) {
             return;
         }
@@ -85,6 +85,6 @@ public class ImageRotate {
         double offset = (source.getWidth() - source.getHeight()) / 2;
         transform.translate(-offset, -offset);
         return transform;
-    }
+    }*/
 
 }

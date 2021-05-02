@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class ImgResize {
     
@@ -22,8 +23,8 @@ public class ImgResize {
             Thumbnails.of(put)
                     .scale(scale)
                     .toFile(tmpFile);
-            FileUtils.copyFile(tmpFile, new File(put));
-            FileUtils.moveFile(new File(put), new File(put + ".resized" + append));
+            FileUtils.copyFile(tmpFile, new File(put + ".resized_" + String.format("%,.0f", Math.floor(100*scale)) + append));
+            //FileUtils.moveFile(new File(put), new File(put + ".resized" + append));
             tmpFile.delete();
         } catch (IOException ex) {
             Logger.getLogger(ImgResize.class.getName()).log(Level.SEVERE, null, ex);

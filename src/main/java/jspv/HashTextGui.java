@@ -8,10 +8,12 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -21,6 +23,7 @@ import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import net.coobird.thumbnailator.util.ThumbnailatorUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -54,7 +57,7 @@ public class HashTextGui extends javax.swing.JFrame {
     public static String langsel;  
     public static AbstractApplicationContext ctx;
     public static HashTextGui frame;
-    private static Dimension frameDimension = new Dimension(800, 550);
+    private static Dimension frameDimension = new Dimension(840, 550);
     public ImageIcon FrameIcon = new ImageIcon(getClass().getResource("/img/FrameIcon-3.png"));
     //public String[] alphabet = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     //private Random mygen = new Random(new Date().getTime());
@@ -193,10 +196,15 @@ public class HashTextGui extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         bResize = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
         bRotate = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JToolBar.Separator();
         bConvert = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         bHelp = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
         bAbout = new javax.swing.JButton();
+        jSeparator9 = new javax.swing.JToolBar.Separator();
         bQuit = new javax.swing.JButton();
         mainSplitPane = new javax.swing.JSplitPane();
         fsScrollPane = new javax.swing.JScrollPane();
@@ -315,6 +323,7 @@ public class HashTextGui extends javax.swing.JFrame {
             }
         });
         topjToolBar.add(bResize);
+        topjToolBar.add(jSeparator2);
 
         bRotate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/rotate-16.png"))); // NOI18N
         bRotate.setToolTipText("Rotate Image");
@@ -327,6 +336,7 @@ public class HashTextGui extends javax.swing.JFrame {
             }
         });
         topjToolBar.add(bRotate);
+        topjToolBar.add(jSeparator6);
 
         bConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/Converter-icon-16.png"))); // NOI18N
         bConvert.setToolTipText("Convert Image");
@@ -339,6 +349,7 @@ public class HashTextGui extends javax.swing.JFrame {
             }
         });
         topjToolBar.add(bConvert);
+        topjToolBar.add(jSeparator7);
 
         bHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/info-cyan-16.png"))); // NOI18N
         bHelp.setToolTipText("Help");
@@ -351,6 +362,7 @@ public class HashTextGui extends javax.swing.JFrame {
             }
         });
         topjToolBar.add(bHelp);
+        topjToolBar.add(jSeparator8);
 
         bAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/help-green-16.png"))); // NOI18N
         bAbout.setToolTipText("About");
@@ -360,6 +372,7 @@ public class HashTextGui extends javax.swing.JFrame {
             }
         });
         topjToolBar.add(bAbout);
+        topjToolBar.add(jSeparator9);
 
         bQuit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/16x16/quit.png"))); // NOI18N
         bQuit.setFocusable(false);
@@ -692,9 +705,12 @@ public class HashTextGui extends javax.swing.JFrame {
                 frame.setMinimumSize(frameDimension);
                 frame.setAlwaysOnTop(false);
                 frame.setVisible(true);
+                System.out.println("ImageIO.getReaderFileSuffixes() = "+Arrays.asList(ImageIO.getReaderFileSuffixes()));
+                System.out.println("ImageIO.getWriterFileSuffixes() = "+Arrays.asList(ImageIO.getWriterFileSuffixes()));
+                System.out.println("ThumbnailatorUtils.getSupportedOutputFormats() = "+ThumbnailatorUtils.getSupportedOutputFormats());
                 //Locale [] alocales = Locale.getAvailableLocales();
                 //for (Locale al: alocales)
-                    ;//System.out.println(al.toLanguageTag());
+                //System.out.println(al.toLanguageTag());
                 //System.out.println(langsel);
                 //System.out.println(ctx.getMessage("jivam.help", null, "help", new Locale(langsel)));
                 //frame.mainSplitPane.setBorder(javax.swing.BorderFactory.createTitledBorder(actionFacade.getMSG("main.img.view",langsel)));
@@ -723,9 +739,14 @@ public class HashTextGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JToolBar.Separator jSeparator7;
+    private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JToolBar.Separator jSeparator9;
     private javax.swing.JLabel labelLang;
     private javax.swing.JMenuItem mAbout;
     private javax.swing.JMenuItem mConvert;

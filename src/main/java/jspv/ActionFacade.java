@@ -36,6 +36,7 @@ import jspv.converter.ImgResize;
 //import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -60,7 +61,7 @@ public class ActionFacade implements ApplicationContextAware {
 
     public static List<String> lookAndFeelsDisplay = new ArrayList<>();
     public static List<String> lookAndFeelsRealNames = new ArrayList<>();
-    public static String[] imgTipArray = {"PNG", "JPG", "GIF", "BMP"};
+    public static String[] imgTipArray = {"PNG", "JPG", "GIF"};//, "BMP"};
     private String nnput;
     public int intbuf;
     private ApplicationContext ctx;
@@ -109,7 +110,7 @@ public class ActionFacade implements ApplicationContextAware {
         if (checkFolder(ffput, frame)) {
             return;
         }
-        jspv.HashTextGui.frame.outTF.setText("Please wait ! Rotate thread = " + Thread.currentThread().getName());
+        //jspv.HashTextGui.frame.outTF.setText("Please wait ! Rotate thread = " + Thread.currentThread().getName());
         JLabel inLabel = new JLabel("Image: " + ffput);
         JSeparator jsep1 = new JSeparator();
         JLabel tipLabel = new JLabel("Input Rotate Degree (from -360 to +360): ");
@@ -125,18 +126,25 @@ public class ActionFacade implements ApplicationContextAware {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JSpinner js = (JSpinner) e.getSource();
+                //if (!NumberUtils.isParsable(js.getValue().toString())) {
+                if (js.getValue().toString().contains("+") || !NumberUtils.isParsable(js.getValue().toString())) {
+                    JOptionPane.showMessageDialog(frame, "Remove '+' symbol !", "Wrong !", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 intbuf = Integer.parseInt(js.getValue().toString());
             }
         });
         Object[] ob = {inLabel, jsep1, tipLabel, spin};
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/24x24/rotate-24.png"));
-        int result = JOptionPane.showConfirmDialog(frame, ob, "Image Rotate", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
+        int result = JOptionPane.showConfirmDialog(frame, ob, "Image Rotate - NOT put a '+' sign !", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
         if (result == JOptionPane.OK_OPTION) {
-            //ImageRotate.thumbnailsRotate(ffput, intbuf);
-            String tipend = StringUtils.substringAfterLast(ffput.toLowerCase(), ".");
+            jspv.HashTextGui.frame.outTF.setText("Please wait ! Rotate thread = " + Thread.currentThread().getName());
+            ImageRotate.thumbnailsRotate(ffput, intbuf);
+            /*String tipend = StringUtils.substringAfterLast(ffput.toLowerCase(), ".");
             switch ( tipend ) {
                 case "bmp":
-                    ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
+                    //ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
+                    ImageRotate.thumbnailsRotate(ffput, intbuf);
                     break;
                 case "png":
                     ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
@@ -150,17 +158,17 @@ public class ActionFacade implements ApplicationContextAware {
                 case "gif":
                     ImageRotate.rotateImage(ffput, ffput + ".rotated." + tipend, intbuf);
                     break;                
-            }
+            }*/
             jspv.HashTextGui.frame.outTF.setText("Rotate completed !");
         }
     }
 
-    @Async
+    @Async // WORK !!!!!
     public void picResize(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
-        jspv.HashTextGui.frame.outTF.setText("Please wait ! Resize thread = " + Thread.currentThread().getName());
+        //jspv.HashTextGui.frame.outTF.setText("Please wait ! Resize thread = " + Thread.currentThread().getName());
         JLabel inLabel = new JLabel("Image: " + ffput);
         JSeparator jsep1 = new JSeparator();
         JLabel tipLabel = new JLabel("Input Resize Scale in percent (max=200%): ");
@@ -184,6 +192,7 @@ public class ActionFacade implements ApplicationContextAware {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/24x24/resize-24.png"));
         int result = JOptionPane.showConfirmDialog(frame, ob, "Image Resize", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
         if (result == JOptionPane.OK_OPTION) {
+            jspv.HashTextGui.frame.outTF.setText("Please wait ! Resize thread = " + Thread.currentThread().getName());
             //int intbuf=(int)spin.getValue();
             Double db = (0.0001 + intbuf) / 100;
             //(int)spin.getValue();
@@ -195,12 +204,12 @@ public class ActionFacade implements ApplicationContextAware {
         }
     }
 
-    @Async
+    @Async // WORK !!!
     public void picConvert(String ffput, JFrame frame) {
         if (checkFolder(ffput, frame)) {
             return;
         }
-        jspv.HashTextGui.frame.outTF.setText("Please wait ! Convert thread = " + Thread.currentThread().getName());
+        //jspv.HashTextGui.frame.outTF.setText("Please wait ! Convert thread = " + Thread.currentThread().getName());
         JComboBox tipSelector = new JComboBox();
         tipSelector.setModel(new javax.swing.DefaultComboBoxModel(imgTipArray));
         nnput = ffput.substring(0, ffput.length() - 4) + ".converted." + tipSelector.getSelectedItem().toString().toLowerCase();
@@ -220,15 +229,16 @@ public class ActionFacade implements ApplicationContextAware {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/24x24/Converter-icon-24.png"));
         int result = JOptionPane.showConfirmDialog(frame, ob, "Image Convert", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon);
         if (result == JOptionPane.OK_OPTION) {
+            jspv.HashTextGui.frame.outTF.setText("Please wait ! Convert thread = " + Thread.currentThread().getName());
             File tmpFile = new File(nnput);
             if (tmpFile.exists()) {
                 JOptionPane.showMessageDialog(frame, "File " + nnput + " is already present !", "File already present !", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             switch (tipSelector.getSelectedItem().toString().toLowerCase()) {
-                case "bmp":
+                /*case "bmp":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.BMP_FORMAT);
-                    break;
+                    break;*/
                 case "png":
                     ImageConverter.imgConvert(ffput, nnput, ImageFormats.PNG_FORMAT);
                     break;
