@@ -54,8 +54,8 @@ public class ActionFacade implements ApplicationContextAware {
 
     @Value("${top}")
     private String top;
-    @Value("${skin}")
-    private String currentLAF;
+    //@Value("${skin}")
+    //private String currentLAF;
     @Value("${perevod}")
     public String perevod;     
 
@@ -253,7 +253,7 @@ public class ActionFacade implements ApplicationContextAware {
         }
     }
 
-    @Async
+    /*@Async
     public void killFileFolder(String ffput, JFrame frame, JTextField jtf, JLabel jlabel) {
         File fftokill = new File(ffput);
         String ffstr;
@@ -286,7 +286,7 @@ public class ActionFacade implements ApplicationContextAware {
                 }
             }
         }
-    }
+    }*/
 
     public int getSelectedScaleFilter(String str) {
         int imgFilter;
@@ -333,7 +333,7 @@ public class ActionFacade implements ApplicationContextAware {
         ImageIcon icon = new ImageIcon(getClass().getResource("/img/jivam.png"));
         JOptionPane.showMessageDialog(frame,
                   "JIVAM - free portable cross-platform image viewer and manipulator, 100%-pure Java.\n"
-                + "Can view, convert, resize and rotate images, support JPG/PNG/GIF formats.\n"
+                + "Can view, convert, resize and rotate images, support GIF/PNG/JPG/JPEG formats.\n"
                 + "Tested in Windows/Linux. Need JRE-1.8.\n"
                 + "Create by Roman Koldaev, Saratov city, Russia.\n"
                 + "Home = http://jivam.sf.net/ , or\n"
@@ -352,7 +352,7 @@ public class ActionFacade implements ApplicationContextAware {
         MyInstLF("javax.swing.plaf.metal.MetalLookAndFeel");        
     }
 
-    public void setLF(JFrame frame) {
+    /*public void setLF(JFrame frame) {
         try {
             UIManager.setLookAndFeel(currentLAF);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
@@ -373,6 +373,6 @@ public class ActionFacade implements ApplicationContextAware {
                 }
             }
         }
-    }
+    }*/
 
 }
