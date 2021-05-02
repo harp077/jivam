@@ -127,10 +127,10 @@ public class ActionFacade implements ApplicationContextAware {
             public void stateChanged(ChangeEvent e) {
                 JSpinner js = (JSpinner) e.getSource();
                 //if (!NumberUtils.isParsable(js.getValue().toString())) {
-                if (js.getValue().toString().contains("+") || !NumberUtils.isParsable(js.getValue().toString())) {
+                /*if (js.getValue().toString().contains("+") || !NumberUtils.isParsable(js.getValue().toString())) {
                     JOptionPane.showMessageDialog(frame, "Remove '+' symbol !", "Wrong !", JOptionPane.ERROR_MESSAGE);
                     return;
-                }
+                }*/
                 intbuf = Integer.parseInt(js.getValue().toString());
             }
         });

@@ -57,7 +57,7 @@ public class HashTextGui extends javax.swing.JFrame {
     public static String langsel;  
     public static AbstractApplicationContext ctx;
     public static HashTextGui frame;
-    private static Dimension frameDimension = new Dimension(848, 550);
+    private static Dimension frameDimension = new Dimension(900, 600);
     public ImageIcon FrameIcon = new ImageIcon(getClass().getResource("/img/FrameIcon-3.png"));
     //public String[] alphabet = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     //private Random mygen = new Random(new Date().getTime());
@@ -128,6 +128,7 @@ public class HashTextGui extends javax.swing.JFrame {
                 ImgLabel.setIcon(null);
                 return;
             }
+            //new Thread(() -> outTF.setText("Please wait ! Show thread = " + Thread.currentThread().getName())).start();
             /*if (ext.endsWith(".bmp")) {
                 //if(tmpFile.exists()) tmpFile.delete();
                 String newpath = fpath.substring(0, fpath.length() - 4);
@@ -161,7 +162,7 @@ public class HashTextGui extends javax.swing.JFrame {
             //ImageIcon icon = new ImageIcon(new ImageIcon(jTree1.getSelectionPath().getLastPathComponent().toString()).getImage().getScaledInstance(jScrollPane1.getWidth() - 5, jScrollPane1.getHeight() - 5, Image.SCALE_DEFAULT));
             ImgLabel.setIcon(icon);
             ImgLabel.setSize(imgScrollPane.getWidth() - 5, imgScrollPane.getHeight() - 5);
-            outTF.setText("");
+            //outTF.setText("");
             String ImgProp = "";
             File picf = new File(fpath);
             ImgProp
@@ -557,8 +558,7 @@ public class HashTextGui extends javax.swing.JFrame {
     }//GEN-LAST:event_bcomboScaleActionPerformed
 
     private void fsjTreeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fsjTreeKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_DOWN
-                || evt.getKeyCode() == KeyEvent.VK_UP) {
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_UP) {
             //new Thread(() -> 
             showImage(fsjTree.getSelectionPath().getLastPathComponent().toString(), bcomboScale.getSelectedItem().toString())
             ;//).start();
