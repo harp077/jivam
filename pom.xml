@@ -11,7 +11,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-ver>5.2.22.RELEASE</spring-ver>
+        <spring-ver>6.1.14</spring-ver>
     </properties>
     
     <name>jivam</name> 
